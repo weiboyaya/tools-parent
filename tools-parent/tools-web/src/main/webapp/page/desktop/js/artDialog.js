@@ -719,9 +719,9 @@
             v,
             u = e.icon,
             x = u && (a ? {
-                png: "icons/" + u + ".png"
+                png: "page/desktop/icon/" + u + ".png"
             }: {
-                backgroundImage: "url('" + e.path + "/skins/icons/" + u + ".png')"
+                backgroundImage: "url('" + e.path + "/skins/icon/" + u + ".png')"
             });
             w._isRun = true;
             w.config = e;

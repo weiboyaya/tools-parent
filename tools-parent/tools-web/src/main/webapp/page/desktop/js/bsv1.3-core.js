@@ -786,8 +786,8 @@ ElsePanel = function(me){
 
 //初始化分页箭头
 Arrows = function(){
-	var arrows_l = "<div id='arrows_l' class='arrows'><img src='images/arrows_l_3.png' /></div>";
-	var arrows_r = "<div id='arrows_r' class='arrows'><img src='images/arrows_r_1.png' /></div>";
+	var arrows_l = "<div id='arrows_l' class='arrows'><img src='page/desktop/images/arrows_l_3.png' /></div>";
+	var arrows_r = "<div id='arrows_r' class='arrows'><img src='page/desktop/images/arrows_r_1.png' /></div>";
 	return arrows = {
 		init:function(){
 			arrows.create();
@@ -861,16 +861,16 @@ Arrows = function(){
 			this_img = this_img +"_thisMenu"+ png;
 			$("#desk_"+t).children("img").attr("src",this_img);
 			if(t>1 && t<DATA.menu.length){
-				$("#arrows_l img").attr("src","images/arrows_l_1.png");
-				$("#arrows_r img").attr("src","images/arrows_r_1.png");
+				$("#arrows_l img").attr("src","page/desktop/images/arrows_l_1.png");
+				$("#arrows_r img").attr("src","page/desktop/images/arrows_r_1.png");
 			}
 			if(t==1){
-				$("#arrows_l img").attr("src","images/arrows_l_3.png");
-				$("#arrows_r img").attr("src","images/arrows_r_1.png");
+				$("#arrows_l img").attr("src","page/desktop/images/arrows_l_3.png");
+				$("#arrows_r img").attr("src","page/desktop/images/arrows_r_1.png");
 			}
 			if(t==DATA.menu.length){
-				$("#arrows_l img").attr("src","images/arrows_l_1.png");
-				$("#arrows_r img").attr("src","images/arrows_r_3.png");
+				$("#arrows_l img").attr("src","page/desktop/images/arrows_l_1.png");
+				$("#arrows_r img").attr("src","page/desktop/images/arrows_r_3.png");
 			}
 		}
 	}
@@ -926,7 +926,7 @@ Filelist = function(){
 	var _folder = "<div id=\"folder\"><a href=\"#\">"+
    		"<div id=\"folder_content\">"+
 			"<div id=\"min_icon_folder\">"+
-            	"<img width=\"32\" height=\"32\" border=\"0\" src=\"icon/min/folder_o.png\" />"+
+            	"<img width=\"32\" height=\"32\" border=\"0\" src=\"page/desktop/icon/min/folder_o.png\" />"+
         	"</div>"+
       		"<div id=\"min_font_folder\">文件夹</div>"+
     	"</div>"+
@@ -1276,7 +1276,7 @@ Windows = function(me){
 				var sonfile = "<a id=\"sonfile_a"+id+"\" href=\"#\">"+
 					"<div id=\"sonfile_"+id+"\" class=\"sonfile\">"+
 						"<div class=\"min_icon_sonfolder\">"+
-							"<img width=\"32\" height=\"32\" border=\"0\" src=\"icon/min/"+icon+"\" />"+
+							"<img width=\"32\" height=\"32\" border=\"0\" src=\"page/desktop/icon/min/"+icon+"\" />"+
 						"</div>"+
 						"<div class=\"min_font_sonfolder\">"+title+"</div>"+
 					"</div></a>";
@@ -1287,7 +1287,7 @@ Windows = function(me){
 						properties = "appid=\""+ jsonSonMenu[i].appid +"\" url=\""+ jsonSonMenu[i].url+"\"";
 						sonlist += "<div id=\""+ jsonSonMenu[i].appid+"\" "+ properties +" class=\"sonMenuList\" align=\"center\">"+
 							"<a href=\"#\"><div class=\"sonMenuListIocn\">"+
-								"<img width=\"64\" height=\"64\" src=\"icon/"+jsonSonMenu[i].icon+"\" />"+
+								"<img width=\"64\" height=\"64\" src=\"page/desktop/icon/"+jsonSonMenu[i].icon+"\" />"+
 								"</div>"+
 								"<div class=\"sonMenuListTitle\">"+jsonSonMenu[i].name+"</div></a>"+
 						"</div>";
@@ -1395,7 +1395,7 @@ appIcon_t1 = appIcon_t0.extend({
 		});
 		appIcon.append($("<img>",{
 			alt:this.app.name ,
-			src:'icon/'+this.app.icon,//图片路径-------------------------------------------------------------------------------------------
+			src:'page/desktop/icon/'+this.app.icon,//图片路径-------------------------------------------------------------------------------------------
 			"class":"appButton_appIconImg",
 			id:'icon_app_'+this.app.appid+'_'+this.app.asc+'_img'
 		
@@ -1483,7 +1483,7 @@ appIcon_t2 = appIcon_t0.extend({
 		});
 		appIcon.append($("<img>",{
 			alt:this.sApp.name ,
-			src:'icon/'+this.sApp.icon,
+			src:'page/desktop/icon/'+this.sApp.icon,
 			"class":"appButton_appIconImg",
 			id:'icon_app_'+this.sApp.appid+'_'+this.sApp.asc+'_img'
 		
@@ -1546,28 +1546,28 @@ mouseStyle = function(){//箭头样式
 		if(thisPage==1){
 			return;
 		}else{
-			$("#arrows_l img").attr("src","images/arrows_l_2.png");
+			$("#arrows_l img").attr("src","page/desktop/images/arrows_l_2.png");
 		}
 	});
 	$("#arrows_r").mouseenter(function (){
 		if(thisPage==DATA.menu.length){
 			return;
 		}else{
-			$("#arrows_r img").attr("src","images/arrows_r_2.png");
+			$("#arrows_r img").attr("src","page/desktop/images/arrows_r_2.png");
 		}
 	});
 	$("#arrows_l").mouseleave(function (){
 		if(thisPage==1){
-			$("#arrows_l img").attr("src","images/arrows_l_3.png");
+			$("#arrows_l img").attr("src","page/desktop/images/arrows_l_3.png");
 		}else{
-			$("#arrows_l img").attr("src","images/arrows_l_1.png");
+			$("#arrows_l img").attr("src","page/desktop/images/arrows_l_1.png");
 		}
 	});
 	$("#arrows_r").mouseleave(function (){
 		if(thisPage==DATA.menu.length){
-			$("#arrows_r img").attr("src","images/arrows_r_3.png");
+			$("#arrows_r img").attr("src","page/desktop/images/arrows_r_3.png");
 		}else{
-			$("#arrows_r img").attr("src","images/arrows_r_1.png");
+			$("#arrows_r img").attr("src","page/desktop/images/arrows_r_1.png");
 		}
 	});
 }
