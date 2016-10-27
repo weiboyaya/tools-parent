@@ -5,8 +5,9 @@
     <groupId>com.diy</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.diy</groupId>
+
+
   <artifactId>tools-common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <name>tools-common</name>
+  <url>http://maven.apache.org</url>
 </project>
