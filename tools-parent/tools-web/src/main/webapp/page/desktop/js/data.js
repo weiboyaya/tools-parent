@@ -3,42 +3,42 @@
 		menuid:'m001',
 		name:'主页',
 		code:'m001',
-		icon:'images/home.png'
+		icon:'page/desktop/images/home.png'
 	},{
 		menuid:'m002',
 		name:'邮件',
 		code:'m002',
-		icon:'images/email.png'
+		icon:'page/desktop/images/email.png'
 	},{
 		menuid:'m003',
 		name:'文件夹',
 		code:'m003',
-		icon:'images/portfolio.png'
+		icon:'page/desktop/images/portfolio.png'
 	},{
 		menuid:'m004',
 		name:'音乐',
 		code:'m004',
-		icon:'images/music.png'
+		icon:'page/desktop/images/music.png'
 	},{
 		menuid:'m005',
 		name:'视频',
 		code:'m005',
-		icon:'images/video.png'
+		icon:'page/desktop/images/video.png'
 	},{
 		menuid:'m006',
 		name:'备忘录',
 		code:'m006',
-		icon:'images/history.png'
+		icon:'page/desktop/images/history.png'
 	},{
 		menuid:'m007',
 		name:'日历',
 		code:'m007',
-		icon:'images/calendar.png'
+		icon:'page/desktop/images/calendar.png'
 	},{
 		menuid:'m008',
 		name:'RSS',
 		code:'m008',
-		icon:'images/rss.png'
+		icon:'page/desktop/images/rss.png'
 	}],
 	app:{//桌面1
 		'readGod':{
@@ -104,7 +104,7 @@
 		},
 		'Pixlr':{
 			appid:'64',
-			icon:'pixlr.png',
+			icon:'Pixlr.png',
 			name:'Pixlr',
 			url:'msg.html',
 			sonMenu:"[]",
