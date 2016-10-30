@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/jee 
+	http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"> 
+       
+		<!-- 加载连接池配置文件 -->
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:datasource/druid.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	 <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="url" value="${tools.druid.url}" />
+		<property name="username" value="${tools.druid.username}" />
+		<property name="password" value="${tools.druid.password}" />
+		<property name="driverClassName" value="${tools.druid.driverClassName}" />
+		<property name="maxActive" value="${tools.druid.maxActive}" />
+		<property name="initialSize" value="${tools.druid.initialSize}" />
+		<property name="maxWait" value="${tools.druid.maxWait}" />
+		<property name="minIdle" value="${tools.druid.minIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${tools.druid.timeBetweenEvictionRunsMillis}" />
+		<property name="minEvictableIdleTimeMillis" value="${tools.druid.minEvictableIdleTimeMillis}" />
+		<property name="validationQuery" value="${tools.druid.validationQuery}" />
+		<property name="testWhileIdle" value="${tools.druid.testWhileIdle}" />
+		<property name="testOnBorrow" value="${tools.druid.testOnBorrow}" />
+		<property name="testOnReturn" value="${tools.druid.testOnReturn}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="${tools.druid.maxPoolPreparedStatementPerConnectionSize}" />
+	</bean>
+
+	<!-- 编写spring 配置文件的配置多数源映射关系  -->
+	<bean id="sessionFactory" class="com.diy.tools.common.db.MyLocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${tools.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${tools.hibernate.show_sql}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!--<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
+				</prop>-->
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<!--<value>hibernate/ZzcBlacklistDetail.hbm.xml</value>-->
+			</list>
+		</property>
+	</bean>
+	
+	<!--配置事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="txServices" expression="execution(* com.diy.tools.common.service.impl.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txServices" />
+	</aop:config>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="txProxyTemplate" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED</prop>-->
+				<!-- 认证相关service方法以auth开头 
+				<prop key="auth*">PROPAGATION_REQUIRED</prop>-->
+				<!-- 防止数据在服务中修改后自动被hibernate自动持久化到数据库 
+				<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>-->
+				<!-- 防止数据在服务中修改后自动被hibernate自动持久化到数据库 
+				<prop key="find*">PROPAGATION_REQUIRED, readOnly</prop>-->
+				<!-- 日志记录类的事物传播特性和其它不同，需要开启一个新的事物 
+				<prop key="insertDaily">PROPAGATION_REQUIRES_NEW</prop>
+				<prop key="updateOperaLog">PROPAGATION_REQUIRES_NEW</prop>
+				
+			</props>
+		</property>
+	</bean>-->
+	
+	<!--封装后的HibernateDaoSupport DAO层Hibernate实现类 -->
+	<bean id="daoSupportHibernate"
+		class="com.diy.tools.common.db.dao.impl.DAOSupportHibernate3Impl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+</beans>
