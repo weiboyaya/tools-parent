@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/jquery-ui-1.8.24.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script  type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-powerFloat-min.js"></script>
+<script type="text/javascript" src="js/artDialog.js"></script>
+<script type="text/javascript" src="js/iframeTools.js"></script>
+<style type="text/css">
+*{ margin: 0;padding:0;}
+#msg{
+	width:350px;
+	height:250px;
+	border:#000 solid 1px;
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	display:none;
+}
+#msg_close{
+	text-align:right;
+	border-bottom:#000 double 1px;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	$("#show").click(function (){
+		$("#msg").slideDown();
+	});
+	$("#hide").click(function (){
+		$("#msg").slideUp();
+	});
+	$("#msg_close a").click(function(){
+		$("#msg").slideUp();
+	});
+})
+</script>
+</head>
+
+<body>
+<input id="show" type="button" value="显示" />
+<input id="hide" type="button" value="隐藏" />
+<div id="msg">
+<div id="msg_close"><a href="#">关闭</a></div>
+<p>恭喜你中奖了。。</p>
+</div>
+</body>
+</html>
